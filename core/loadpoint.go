@@ -561,7 +561,7 @@ func (lp *Loadpoint) evChargeCurrentHandler(current float64) {
 // If physical charge meter is present this handler is not used.
 // The actual value is published by the evChargeCurrentHandler
 func (lp *Loadpoint) evChargeCurrentWrappedMeterHandler(current float64) {
-	power := current * float64(lp.ActivePhases()) * Voltage
+	power := current * float64(lp.ActivePhases()) * Voltage / 1.73205080
 
 	// if disabled we cannot be charging
 	if !lp.enabled || !lp.charging() {
